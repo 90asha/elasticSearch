@@ -1,0 +1,19 @@
+
+version: '2'
+
+services:
+
+  spring-boot:
+    image: bankmonitor/spring-boot
+    ports:
+      - 8080:8080
+    links:
+      - es:elasticsearch
+
+
+  es:
+    image: elasticsearch:latest
+    volumes:
+      - /srv/docker/es:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
